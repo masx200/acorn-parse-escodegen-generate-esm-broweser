@@ -56,3 +56,15 @@ yarn add https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.
 ```javascript
 import { parse, generate } from "acorn-parse-escodegen-generate-esm-broweser";
 ```
+
+A small, fast, JavaScript-based JavaScript parser
+
+https://github.com/acornjs/acorn
+
+https://npm.taobao.org/package/acorn
+
+ECMAScript code generator
+
+https://npm.taobao.org/package/escodegen
+
+https://github.com/estools/escodegen
