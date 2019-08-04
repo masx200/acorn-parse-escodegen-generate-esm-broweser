@@ -1,7 +1,10 @@
 {
+    "scripts": {
+        "build": "rollup -c"
+    },
     "name": "acorn-parse-escodegen-generate-esm-broweser",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "./dist/acorn-parse-escodegen-generate.esm.js",
     "repository": "https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
     "license": "MIT",
