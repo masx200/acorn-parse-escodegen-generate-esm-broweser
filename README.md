@@ -2,7 +2,9 @@
 
 <!-- acorn-parse-escodegen-generate-esm-broweser -->
 
-在浏览器中使用 `acorn`和`escodegen` 来 进行 `javascript` 源代码 和 `抽象语法树`的相互转换的`ES`模块,
+可以在浏览器中运行，不需要nodejs环境，压缩后体积为155KB
+
+使用 `acorn`和`escodegen` 来 进行 `javascript` 源代码 和 `抽象语法树`的相互转换的`ES`模块,
 
 把`escodegen`和`estraverse`和`esutils`模块都从`commonjs`模块改成`ES`模块,`acorn`使用自带的`ES`模块
 
