@@ -18,3 +18,35 @@
   }
 }
 ```
+
+# 安装模块
+
+```bash
+npm install --save https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git
+```
+
+或者
+
+```shell
+yarn add https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git
+
+```
+
+## 获取已压缩模块
+
+### ES 模块
+
+https://masx200.github.io/acorn-parse-escodegen-generate-esm-broweser/dist/acorn-parse-escodegen-generate.esm.min.js
+
+或者从 cdn 获取
+
+https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@latest/dist/acorn-parse-escodegen-generate.esm.min.js
+
+```html
+<script type="module">
+  import {
+    parse,
+    generate
+  } from "https://cdn.jsdelivr.net/gh/masx200/IMPORTCJSAMDUMD@latest/dist/index.esm.min.js";
+</script>
+```
