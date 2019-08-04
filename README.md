@@ -6,7 +6,7 @@
 
 把`escodegen`和`estraverse`和`esutils`模块都从`commonjs`模块改成`ES`模块,`acorn`使用自带的`ES`模块
 
-并且使用`rollup` 打包,并开启`tree-shaking`和代码压缩
+并且使用`rollup` 打包,并开启`tree-shaking`和使用`terser`代码压缩
 
 ```json
 {
