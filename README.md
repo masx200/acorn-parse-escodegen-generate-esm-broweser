@@ -8,6 +8,8 @@
 
 并且使用`rollup` 打包,并开启`tree-shaking`和使用`terser`代码压缩
 
+依赖的模块
+
 ```json
 {
   "dependencies": {
@@ -17,19 +19,6 @@
     "esutils": "^2.0.3"
   }
 }
-```
-
-# 安装模块
-
-```bash
-npm install --save https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git
-```
-
-或者
-
-```shell
-yarn add https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git
-
 ```
 
 ## 获取已压缩模块
@@ -47,6 +36,23 @@ https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@
   import {
     parse,
     generate
-  } from "https://cdn.jsdelivr.net/gh/masx200/IMPORTCJSAMDUMD@latest/dist/index.esm.min.js";
+  } from "https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@latest/dist/acorn-parse-escodegen-generate.esm.min.js";
 </script>
+```
+
+# 安装模块
+
+```bash
+npm install --save https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git
+```
+
+或者
+
+```shell
+yarn add https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git
+
+```
+
+```javascript
+import { parse, generate } from "acorn-parse-escodegen-generate-esm-broweser";
 ```
