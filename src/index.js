@@ -1,4 +1,4 @@
 import { generate } from "./escodegen.js";
-import { parse } from "acorn/dist/acorn.mjs";
+import { parse, Parser } from "acorn/dist/acorn.mjs";
 
-export { generate, parse };
+export { generate, parse, Parser };
