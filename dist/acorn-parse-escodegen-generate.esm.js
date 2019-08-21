@@ -23,7 +23,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-    var Syntax;
+    var Syntax;
 
     Syntax = {
         AssignmentExpression: 'AssignmentExpression',
@@ -310,7 +310,7 @@ var  //Syntax,
   parse,
   sourceMap = false,
   sourceCode,
-  preserveBlankLines;
+  preserveBlankLines;
 
 // estraverse = require('estraverse');
 // esutils = require('esutils');
@@ -8200,5 +8200,5 @@ function parse$1(input, options) {
   return Parser.parse(input, options)
 }
 
-export { _generate as generate, parse$1 as parse };
+export { Parser, _generate as generate, parse$1 as parse };
 //# sourceMappingURL=acorn-parse-escodegen-generate.esm.js.map
