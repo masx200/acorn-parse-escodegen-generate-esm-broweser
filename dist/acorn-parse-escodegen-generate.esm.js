@@ -23,7 +23,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-    var Syntax;
+    var Syntax;
 
     Syntax = {
         AssignmentExpression: 'AssignmentExpression',
@@ -310,7 +310,7 @@ var  //Syntax,
   parse,
   sourceMap = false,
   sourceCode,
-  preserveBlankLines;
+  preserveBlankLines;
 
 // estraverse = require('estraverse');
 // esutils = require('esutils');
@@ -3297,6 +3297,7 @@ var ecma5AndLessKeywords = "break case catch continue debugger default do else f
 
 var keywords = {
   5: ecma5AndLessKeywords,
+  "5module": ecma5AndLessKeywords + " export import",
   6: ecma5AndLessKeywords + " const class extends export import super"
 };
 
@@ -3596,8 +3597,8 @@ var defaultOptions = {
   // either 3, 5, 6 (2015), 7 (2016), 8 (2017), 9 (2018), or 10
   // (2019). This influences support for strict mode, the set of
   // reserved words, and support for new syntax features. The default
-  // is 9.
-  ecmaVersion: 9,
+  // is 10.
+  ecmaVersion: 10,
   // `sourceType` indicates the mode the code should be parsed in.
   // Can be either `"script"` or `"module"`. This influences global
   // strict mode and parsing of `import` and `export` declarations.
@@ -3744,7 +3745,7 @@ var
 var Parser = function Parser(options, input, startPos) {
   this.options = options = getOptions(options);
   this.sourceFile = options.sourceFile;
-  this.keywords = wordsRegexp(keywords[options.ecmaVersion >= 6 ? 6 : 5]);
+  this.keywords = wordsRegexp(keywords[options.ecmaVersion >= 6 ? 6 : options.sourceType === "module" ? "5module" : 5]);
   var reserved = "";
   if (options.allowReserved !== true) {
     for (var v = options.ecmaVersion;; v--)
@@ -4031,9 +4032,7 @@ pp$1.parseTopLevel = function(node) {
       } }
   this.adaptDirectivePrologue(node.body);
   this.next();
-  if (this.options.ecmaVersion >= 6) {
-    node.sourceType = this.options.sourceType;
-  }
+  node.sourceType = this.options.sourceType;
   return this.finishNode(node, "Program")
 };
 
@@ -5390,7 +5389,7 @@ pp$3.parseSubscript = function(base, startPos, startLoc, noCalls, maybeAsyncArro
   if (computed || this.eat(types.dot)) {
     var node = this.startNodeAt(startPos, startLoc);
     node.object = base;
-    node.property = computed ? this.parseExpression() : this.parseIdent(true);
+    node.property = computed ? this.parseExpression() : this.parseIdent(this.options.allowReserved !== "never");
     node.computed = !!computed;
     if (computed) { this.expect(types.bracketR); }
     base = this.finishNode(node, "MemberExpression");
@@ -5399,7 +5398,7 @@ pp$3.parseSubscript = function(base, startPos, startLoc, noCalls, maybeAsyncArro
     this.yieldPos = 0;
     this.awaitPos = 0;
     this.awaitIdentPos = 0;
-    var exprList = this.parseExprList(types.parenR, this.options.ecmaVersion >= 8 && base.type !== "Import", false, refDestructuringErrors);
+    var exprList = this.parseExprList(types.parenR, this.options.ecmaVersion >= 8, false, refDestructuringErrors);
     if (maybeAsyncArrow && !this.canInsertSemicolon() && this.eat(types.arrow)) {
       this.checkPatternErrors(refDestructuringErrors, false);
       this.checkYieldAwaitInDefaultParams();
@@ -5417,16 +5416,6 @@ pp$3.parseSubscript = function(base, startPos, startLoc, noCalls, maybeAsyncArro
     var node$1 = this.startNodeAt(startPos, startLoc);
     node$1.callee = base;
     node$1.arguments = exprList;
-    if (node$1.callee.type === "Import") {
-      if (node$1.arguments.length !== 1) {
-        this.raise(node$1.start, "import() requires exactly one argument");
-      }
-
-      var importArg = node$1.arguments[0];
-      if (importArg && importArg.type === "SpreadElement") {
-        this.raise(importArg.start, "... is not allowed in import()");
-      }
-    }
     base = this.finishNode(node$1, "CallExpression");
   } else if (this.type === types.backQuote) {
     var node$2 = this.startNodeAt(startPos, startLoc);
@@ -5538,8 +5527,8 @@ pp$3.parseExprAtom = function(refDestructuringErrors) {
     return this.parseTemplate()
 
   case types._import:
-    if (this.options.ecmaVersion > 10) {
-      return this.parseDynamicImport()
+    if (this.options.ecmaVersion >= 11) {
+      return this.parseExprImport()
     } else {
       return this.unexpected()
     }
@@ -5549,13 +5538,34 @@ pp$3.parseExprAtom = function(refDestructuringErrors) {
   }
 };
 
-pp$3.parseDynamicImport = function() {
+pp$3.parseExprImport = function() {
   var node = this.startNode();
-  this.next();
-  if (this.type !== types.parenL) {
+  this.next(); // skip `import`
+  switch (this.type) {
+  case types.parenL:
+    return this.parseDynamicImport(node)
+  default:
     this.unexpected();
   }
-  return this.finishNode(node, "Import")
+};
+
+pp$3.parseDynamicImport = function(node) {
+  this.next(); // skip `(`
+
+  // Parse node.source.
+  node.source = this.parseMaybeAssign();
+
+  // Verify ending.
+  if (!this.eat(types.parenR)) {
+    var errorPos = this.start;
+    if (this.eat(types.comma) && this.eat(types.parenR)) {
+      this.raiseRecoverable(errorPos, "Trailing comma is not allowed in import()");
+    } else {
+      this.unexpected(errorPos);
+    }
+  }
+
+  return this.finishNode(node, "ImportExpression")
 };
 
 pp$3.parseLiteral = function(value) {
@@ -5665,12 +5675,12 @@ pp$3.parseNew = function() {
       { this.raiseRecoverable(node.start, "new.target can only be used in functions"); }
     return this.finishNode(node, "MetaProperty")
   }
-  var startPos = this.start, startLoc = this.startLoc;
+  var startPos = this.start, startLoc = this.startLoc, isImport = this.type === types._import;
   node.callee = this.parseSubscripts(this.parseExprAtom(), startPos, startLoc, true);
-  if (this.options.ecmaVersion > 10 && node.callee.type === "Import") {
-    this.raise(node.callee.start, "Cannot use new with import(...)");
+  if (isImport && node.callee.type === "ImportExpression") {
+    this.raise(startPos, "Cannot use new with import()");
   }
-  if (this.eat(types.parenL)) { node.arguments = this.parseExprList(types.parenR, this.options.ecmaVersion >= 8 && node.callee.type !== "Import", false); }
+  if (this.eat(types.parenL)) { node.arguments = this.parseExprList(types.parenR, this.options.ecmaVersion >= 8, false); }
   else { node.arguments = empty$1; }
   return this.finishNode(node, "NewExpression")
 };
@@ -5857,7 +5867,7 @@ pp$3.parsePropertyName = function(prop) {
       prop.computed = false;
     }
   }
-  return prop.key = this.type === types.num || this.type === types.string ? this.parseExprAtom() : this.parseIdent(true)
+  return prop.key = this.type === types.num || this.type === types.string ? this.parseExprAtom() : this.parseIdent(this.options.allowReserved !== "never")
 };
 
 // Initialize empty function node.
@@ -6037,7 +6047,6 @@ pp$3.checkUnreserved = function(ref) {
 
 pp$3.parseIdent = function(liberal, isBinding) {
   var node = this.startNode();
-  if (liberal && this.options.allowReserved === "never") { liberal = false; }
   if (this.type === types.name) {
     node.name = this.value;
   } else if (this.type.keyword) {
