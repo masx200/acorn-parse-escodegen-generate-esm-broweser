@@ -1,6 +1,10 @@
 {
+
+ 
+"publishConfig": { "registry": "https://npm.pkg.github.com/@masx200" },
+
     "scripts": {
-        "build": "rollup -c"
+        "build": "rollup -c rollup.config.js"
     },
     "name": "acorn-parse-escodegen-generate-esm-broweser",
     "version": "1.0.2",
