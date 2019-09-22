@@ -27,9 +27,15 @@
 
 ### ES 模块
 
+
+<!--
 https://masx200.github.io/acorn-parse-escodegen-generate-esm-broweser/dist/acorn-parse-escodegen-generate.esm.min.js
 
-或者从 cdn 获取
+或者
+
+-->
+
+从 cdn 获取
 
 https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@latest/dist/acorn-parse-escodegen-generate.esm.min.js
 
