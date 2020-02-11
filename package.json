@@ -1,33 +1,30 @@
 {
-
- 
-"publishConfig": { "registry": "https://npm.pkg.github.com/@masx200" },
-
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
     "scripts": {
         "build": "rollup -c rollup.config.js"
     },
-    "name": "acorn-parse-escodegen-generate-esm-broweser",
-    "version": "1.0.2",
+    "name": "@masx200/acorn-parse-escodegen-generate-esm-broweser",
+    "version": "1.0.3",
     "main": "./dist/acorn-parse-escodegen-generate.esm.js",
     "repository": "https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {
-"serialize-javascript":"^2.1.2",
-"terser":"^4.4.2",
-"typescript":"^3.7.3",
-"rollup":"^1.27.9",
+        "serialize-javascript": "^2.1.2",
+        "terser": "^4.4.2",
+        "typescript": "^3.7.3",
+        "rollup": "^1.27.9",
         "acorn": "^7.0.0",
         "escodegen": "^1.11.1",
         "estraverse": "^4.2.0",
         "esutils": "^2.0.3",
-        
         "rollup-plugin-commonjs": "^10.0.2",
         "rollup-plugin-json": "^4.0.0",
         "rollup-plugin-node-resolve": "^5.2.0",
         "rollup-plugin-terser": "^5.1.2"
-        
     },
     "description": "在浏览器中使用 acorn和escodegen 来 进行 javascript 源代码 和 抽象语法树的相互转换的ES模块"
 }
