@@ -5450,7 +5450,7 @@ pp$3.parseExprAtom = function(refDestructuringErrors) {
     //     super [ Expression ]
     //     super . IdentifierName
     // SuperCall:
-    //     super Arguments
+    //     super ( Arguments )
     if (this.type !== types.dot && this.type !== types.bracketL && this.type !== types.parenL)
       { this.unexpected(); }
     return this.finishNode(node, "Super")
@@ -5745,7 +5745,7 @@ pp$3.parseObj = function(isPattern, refDestructuringErrors) {
   while (!this.eat(types.braceR)) {
     if (!first) {
       this.expect(types.comma);
-      if (this.afterTrailingComma(types.braceR)) { break }
+      if (this.options.ecmaVersion >= 5 && this.afterTrailingComma(types.braceR)) { break }
     } else { first = false; }
 
     var prop = this.parseProperty(isPattern, refDestructuringErrors);
@@ -8196,6 +8196,32 @@ pp$9.readWord = function() {
     type = keywords$1[word];
   }
   return this.finishToken(type, word)
+};
+
+// Acorn is a tiny, fast JavaScript parser written in JavaScript.
+
+var version = "7.1.0";
+
+Parser.acorn = {
+  Parser: Parser,
+  version: version,
+  defaultOptions: defaultOptions,
+  Position: Position,
+  SourceLocation: SourceLocation,
+  getLineInfo: getLineInfo,
+  Node: Node,
+  TokenType: TokenType,
+  tokTypes: types,
+  keywordTypes: keywords$1,
+  TokContext: TokContext,
+  tokContexts: types$1,
+  isIdentifierChar: isIdentifierChar,
+  isIdentifierStart: isIdentifierStart,
+  Token: Token,
+  isNewLine: isNewLine,
+  lineBreak: lineBreak,
+  lineBreakG: lineBreakG,
+  nonASCIIwhitespace: nonASCIIwhitespace
 };
 
 // The main exported interface (under `self.acorn` when in the
