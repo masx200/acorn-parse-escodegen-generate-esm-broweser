@@ -2951,7 +2951,11 @@ function generateInternal(node) {
 
   throw new Error("Unknown node type: " + node.type);
 }
-
+/**
+ * @param {any} node
+ * @param {import("escodegen").GenerateOptions} options
+ * @returns {string}
+ */
 function generate(node, options) {
   var defaultOptions = getDefaultOptions(),
     result,
