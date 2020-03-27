@@ -20,7 +20,7 @@ https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@
 <script type="module">
     import {
         parse,
-        generate
+        generate,
     } from "https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@latest/dist/acorn-parse-escodegen-generate.esm.min.js";
 </script>
 ```

@@ -1,16 +1,17 @@
 {
+    "version": "1.1.1",
     "types": "./dist/index.d.ts",
-    "module": "./dist/acorn-parse-escodegen-generate.esm.min.js",
+    "module": "./dist/index.js",
     "type": "module",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
     "scripts": {
-        "build": "rollup -c rollup.config.js"
+        "build": "rollup -c rollup.config.js",
+        "prettier": "prettier --write **/*.js *.md *.json"
     },
     "name": "@masx200/acorn-parse-escodegen-generate-esm-broweser",
-    "version": "1.1.0",
-    "main": "./dist/acorn-parse-escodegen-generate.esm.min.js",
+    "main": "./dist/index.js",
     "repository": "https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
     "license": "MIT",
