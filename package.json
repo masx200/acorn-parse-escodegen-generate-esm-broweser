@@ -1,38 +1,43 @@
 {
-    "version": "1.1.1",
-    "types": "./dist/index.d.ts",
-    "module": "./dist/index.js",
-    "type": "module",
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
-    },
-    "scripts": {
-        "build": "rollup -c rollup.config.js",
-        "prettier": "prettier --write **/*.js *.md *.json"
-    },
-    "name": "@masx200/acorn-parse-escodegen-generate-esm-broweser",
-    "main": "./dist/index.js",
-    "repository": "https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git",
-    "author": "masx200 <34191203+masx200@users.noreply.github.com>",
-    "license": "MIT",
-    "dependencies": {
-        "@types/escodegen": "^0.0.6",
-        "acorn": "^7.1.1"
-    },
-    "devDependencies": {
-        "@rollup/plugin-commonjs": "^11.0.2",
-        "@rollup/plugin-json": "^4.0.2",
-        "@rollup/plugin-node-resolve": "^7.1.1",
-        "escodegen": "^1.14.1",
-        "estraverse": "^5.0.0",
-        "esutils": "^2.0.3",
-        "minimist": "^1.2.5",
-        "prettier": "^2.0.2",
-        "rollup": "^2.2.0",
-        "rollup-plugin-terser": "^5.3.0",
-        "serialize-javascript": "^3.0.0",
-        "terser": "^4.6.7",
-        "typescript": "^3.8.3"
-    },
-    "description": "在浏览器中使用 acorn和escodegen 来 进行 javascript 源代码 和 抽象语法树的相互转换的ES模块"
+  "version": "1.1.1",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "prettier": "prettier --write **/*.js *.md *.json"
+  },
+  "name": "@masx200/acorn-parse-escodegen-generate-esm-broweser",
+  "main": "./dist/index.js",
+  "repository": "git+https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser.git",
+  "author": "masx200 <34191203+masx200@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/escodegen": "^0.0.6",
+    "acorn": "^7.1.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "escodegen": "^1.14.1",
+    "estraverse": "^5.0.0",
+    "esutils": "^2.0.3",
+    "minimist": "^1.2.5",
+    "prettier": "^2.0.2",
+    "rollup": "^2.2.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "serialize-javascript": "^3.0.0",
+    "terser": "^4.6.7",
+    "typescript": "^3.8.3"
+  },
+  "description": "在浏览器中使用 acorn和escodegen 来 进行 javascript 源代码 和 抽象语法树的相互转换的ES模块",
+  "bugs": {
+    "url": "https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser/issues"
+  },
+  "homepage": "https://github.com/masx200/acorn-parse-escodegen-generate-esm-broweser#readme",
+  "keywords": []
 }
