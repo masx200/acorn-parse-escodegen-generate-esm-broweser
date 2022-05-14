@@ -32,7 +32,7 @@
     "rollup-plugin-terser": "^7.0.0",
     "serialize-javascript": "^6.0.0",
     "terser": "^5.13.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4.6.4"
   },
   "description": "在浏览器中使用 acorn和escodegen 来 进行 javascript 源代码 和 抽象语法树的相互转换的ES模块",
   "bugs": {
