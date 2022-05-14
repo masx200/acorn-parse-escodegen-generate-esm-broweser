@@ -20,7 +20,7 @@
     "acorn": "^8.7.1"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "escodegen": "^2.0.0",
