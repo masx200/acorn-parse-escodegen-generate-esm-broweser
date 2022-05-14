@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/escodegen": "^0.0.6",
-    "acorn": "^7.1.1"
+    "acorn": "^8.7.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
