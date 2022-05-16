@@ -3,7 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
 const myterserplugin = terser({
-    sourcemap: true,
+    //sourcemap: true,
     toplevel: true,
     output: {
         comments: !1,
