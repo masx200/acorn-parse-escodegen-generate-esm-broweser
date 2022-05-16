@@ -7,6 +7,8 @@ var ast = parse(code, {
     ecmaVersion: "latest",
 });
 var text = generate(ast);
+console.log(ast)
+console.log(text)
 assert.deepEqual(ast, {
     type: "Program",
     start: 0,
