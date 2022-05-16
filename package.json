@@ -16,7 +16,7 @@
   "author": "masx200 <34191203+masx200@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/escodegen": "^0.0.6",
+    "@types/escodegen": "^0.0.7",
     "acorn": "^8.7.1"
   },
   "devDependencies": {

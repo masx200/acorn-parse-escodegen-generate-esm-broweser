@@ -64,10 +64,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@types/escodegen@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@types/escodegen/-/escodegen-0.0.6.tgz#5230a9ce796e042cda6f086dbf19f22ea330659c"
-  integrity sha1-UjCpznluBCzabwhtvxnyLqMwZZw=
+"@types/escodegen@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@types/escodegen/-/escodegen-0.0.7.tgz#a1c3e3dfd76da89f01d7d196eebe227ebe4b6eec"
+  integrity sha512-46oENdSRNEJXCNrPJoC3vRolZJpfeEm7yvATkd2bCncKFG0PUEyfBCaoacfpcXH4Y5RRuqdVj3J7TI+wwn2SbQ==
 
 "@types/estree@*":
   version "0.0.51"
