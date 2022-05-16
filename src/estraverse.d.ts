@@ -74,7 +74,11 @@ declare namespace _Syntax {
 }
 declare function _traverse(root: any, visitor: any): void;
 declare function _replace(root: any, visitor: any): any;
-declare function _attachComments(tree: any, providedComments: any, tokens: any): any;
+declare function _attachComments(
+    tree: any,
+    providedComments: any,
+    tokens: any
+): any;
 declare namespace _VisitorKeys {
     const AssignmentExpression_1: string[];
     export { AssignmentExpression_1 as AssignmentExpression };
@@ -251,4 +255,12 @@ declare class Controller {
     traverse(root: any, visitor: any): void;
     replace(root: any, visitor: any): any;
 }
-export { _Syntax as Syntax, _traverse as traverse, _replace as replace, _attachComments as attachComments, _VisitorKeys as VisitorKeys, _VisitorOption as VisitorOption, _Controller as Controller };
+export {
+    _Syntax as Syntax,
+    _traverse as traverse,
+    _replace as replace,
+    _attachComments as attachComments,
+    _VisitorKeys as VisitorKeys,
+    _VisitorOption as VisitorOption,
+    _Controller as Controller,
+};

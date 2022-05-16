@@ -1,7 +1,10 @@
 export { attachComments } from "./estraverse.js";
 export const version: "1.11.1";
 export const browser: true;
-declare function _generate(node: any, options: import("escodegen").GenerateOptions): string;
+declare function _generate(
+    node: any,
+    options: import("escodegen").GenerateOptions
+): string;
 declare const _Precedence: any;
 declare namespace _FORMAT_MINIFY {
     export namespace indent {
@@ -45,4 +48,9 @@ declare namespace _FORMAT_DEFAULTS {
     export const safeConcatenation: boolean;
     export const preserveBlankLines: boolean;
 }
-export { _generate as generate, _Precedence as Precedence, _FORMAT_MINIFY as FORMAT_MINIFY, _FORMAT_DEFAULTS as FORMAT_DEFAULTS };
+export {
+    _generate as generate,
+    _Precedence as Precedence,
+    _FORMAT_MINIFY as FORMAT_MINIFY,
+    _FORMAT_DEFAULTS as FORMAT_DEFAULTS,
+};
