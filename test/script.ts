@@ -41,4 +41,4 @@ assert.deepEqual(ast, {
     ],
     sourceType: "script",
 });
-assert.equal(text, "var b=3;");
+assert.equal(text, "var b = 3;");
