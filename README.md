@@ -14,14 +14,14 @@
 
 从 cdn 获取
 
-https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@latest/dist/acorn-parse-escodegen-generate.esm.min.js
+https://cdn.skypack.dev/@masx200/acorn-parse-escodegen-generate-esm-broweser@v2.0.0/
 
 ```html
 <script type="module">
     import {
         parse,
         generate,
-    } from "https://cdn.jsdelivr.net/gh/masx200/acorn-parse-escodegen-generate-esm-broweser@latest/dist/acorn-parse-escodegen-generate.esm.min.js";
+    } from "https://cdn.skypack.dev/@masx200/acorn-parse-escodegen-generate-esm-broweser@v2.0.0/";
 </script>
 ```
 
