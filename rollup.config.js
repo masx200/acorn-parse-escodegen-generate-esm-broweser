@@ -2,6 +2,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
+import rollupExternalModules from "rollup-external-modules";
 const myterserplugin = terser({
     //sourcemap: true,
     toplevel: true,
@@ -17,20 +18,8 @@ const myterserplugin = terser({
     mangle: true,
 });
 export default [
-    // {
-    //     input: './src/index.js',
-    //     output: [{
-    //             file: './dist/acorn-parse-escodegen-generate.esm.js',
-    //             format: 'esm',
-    //             sourcemap: true
-    //         }],
-    //     plugins: [
-    //         json(),
-    //         resolve(),
-    //         commonjs()
-    //     ]
-    // },
     {
+        external: rollupExternalModules,
         input: "./src/index.js",
         output: [
             {
