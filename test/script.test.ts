@@ -2,7 +2,8 @@ import assert from "assert";
 
 import { generate, parse } from "../dist/index.js";
 import { test } from "vitest";
-console.log(test, generate, parse);
+
+//console.log(test, generate, parse);
 test("script-test", () => {
     var code = "var b=3";
     var ast = parse(code, {
